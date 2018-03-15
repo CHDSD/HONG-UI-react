@@ -6,16 +6,31 @@ var config = {
   entry: "./src/index.js",
 
   output: {
-    path: './dist/',
+    path: path.resolve(__dirname, 'dist'),
     filename: 'h-ui-react.js',
-    // library: 'HuiReact',
-    libraryTarget: 'commonjs2'
+    library: 'HuiReact',
+    libraryTarget: 'umd',
   },
 
   externals: {
-    "react": "react",
-    "react-dom": "react-dom",
-    "react-router": "react-router"
+    'react': {
+      root: 'React',
+      commonjs2: 'react',
+      commonjs: 'react',
+      amd: 'react',
+    },
+    'react-dom': {
+      root: 'ReactDOM',
+      commonjs2: 'react-dom',
+      commonjs: 'react-dom',
+      amd: 'react-dom',
+    },
+    'react-router': {
+      root: 'ReactRouter',
+      commonjs2: 'react-router',
+      commonjs: 'react-router',
+      amd: 'react-router',
+    }
   },
 
   module: {
@@ -36,7 +51,7 @@ var config = {
 
       {
         test: /\.css$/,
-        loaders: ['style-loader', 'css-loader',"sass-loader"]
+        loaders: ['style-loader', 'css-loader']
       },
 
       {
